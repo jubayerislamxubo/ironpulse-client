@@ -12,7 +12,7 @@ const AppliedTrainers = () => {
   }, []);
 
   const fetchApplications = () => {
-    axios.get('http://localhost:5000/applied-trainers')
+    axios.get('https://ironpulse-server-silk.vercel.app/applied-trainers')
       .then(res => {
         setApplications(res.data);
         setLoading(false);
@@ -21,7 +21,7 @@ const AppliedTrainers = () => {
   };
 
   const handleApprove = (app) => {
-    axios.patch(`http://localhost:5000/approve-trainer/${app._id}`, { email: app.userEmail })
+    axios.patch(`https://ironpulse-server-silk.vercel.app/approve-trainer/${app._id}`, { email: app.userEmail })
       .then(() => {
         fetchApplications();
       })
@@ -32,7 +32,7 @@ const AppliedTrainers = () => {
     e.preventDefault();
     if (!selectedApp) return;
 
-    axios.patch(`http://localhost:5000/reject-trainer/${selectedApp._id}`, { feedback })
+    axios.patch(`https://ironpulse-server-silk.vercel.app/reject-trainer/${selectedApp._id}`, { feedback })
       .then(() => {
         setSelectedApp(null);
         setFeedback('');

@@ -6,7 +6,7 @@ const Home = () => {
   const [featuredClasses, setFeaturedClasses] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/featured-classes')
+    axios.get('https://ironpulse-server-silk.vercel.app/featured-classes')
       .then(response => {
         const enrichedData = response.data.map((cls, index) => {
           const extraInfo = [

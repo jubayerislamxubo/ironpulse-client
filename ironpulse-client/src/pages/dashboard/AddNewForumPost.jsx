@@ -27,7 +27,7 @@ const AddNewForumPost = () => {
       createdAt: new Date()
     };
 
-    axios.post('http://localhost:5000/forum-posts', forumPost)
+    axios.post('https://ironpulse-server-silk.vercel.app/forum-posts', forumPost)
       .then(() => {
         setLoading(false);
         setMessage('Forum post created successfully! 🚀');

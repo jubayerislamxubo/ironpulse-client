@@ -7,7 +7,7 @@ const Balance = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/payments')
+    axios.get('https://ironpulse-server-silk.vercel.app/payments')
       .then(res => {
         setPayments(res.data);
         

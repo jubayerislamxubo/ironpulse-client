@@ -11,7 +11,7 @@ const Favorites = () => {
   useEffect(() => {
     if (user?.email) {
       
-      axios.get(`http://localhost:5000/favorites?email=${user.email}`)
+      axios.get(`https://ironpulse-server-silk.vercel.app/favorites?email=${user.email}`)
         .then(res => {
           setFavorites(res.data);
           setLoading(false);
@@ -28,7 +28,7 @@ const Favorites = () => {
     setFavorites(favorites.filter(item => item._id !== id));
     
     
-    axios.delete(`http://localhost:5000/favorites/${id}`)
+    axios.delete(`https://ironpulse-server-silk.vercel.app/favorites/${id}`)
       .catch(err => console.error("Remove Error:", err));
   };
 

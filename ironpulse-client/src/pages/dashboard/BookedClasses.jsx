@@ -11,7 +11,7 @@ const BookedClasses = () => {
   useEffect(() => {
     if (user?.email) {
       
-      axios.get(`http://localhost:5000/bookings?email=${user.email}`)
+      axios.get(`https://ironpulse-server-silk.vercel.app/bookings?email=${user.email}`)
         .then(res => {
           setBookedClasses(res.data);
           setLoading(false);

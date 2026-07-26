@@ -11,7 +11,7 @@ const AllClasses = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/classes')
+    axios.get('https://ironpulse-server-silk.vercel.app/classes')
       .then(res => {
         setClasses(res.data);
         setLoading(false);
@@ -38,7 +38,7 @@ const AllClasses = () => {
       category: cls.category
     };
 
-    axios.post('http://localhost:5000/favorites', favData)
+    axios.post('https://ironpulse-server-silk.vercel.app/favorites', favData)
       .then(res => {
         if (res.status === 201) {
           alert(`⭐ "${cls.name}" added to your favorites!`);

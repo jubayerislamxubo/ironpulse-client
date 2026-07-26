@@ -11,7 +11,7 @@ const DashboardLayout = () => {
   
   useEffect(() => {
     if (user?.email) {
-      axios.get(`http://localhost:5000/users/role/${user.email}`)
+      axios.get(`https://ironpulse-server-silk.vercel.app/users/role/${user.email}`)
         .then(res => {
           setRole(res.data?.role || 'user');
           setLoading(false);

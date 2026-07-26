@@ -26,7 +26,7 @@ const ApplyTrainer = () => {
     setLoading(true);
     setStatusMessage({ type: '', text: '' });
 
-    axios.post('http://localhost:5000/apply-trainer', formData)
+    axios.post('https://ironpulse-server-silk.vercel.app/apply-trainer', formData)
       .then(res => {
         setLoading(false);
         setStatusMessage({

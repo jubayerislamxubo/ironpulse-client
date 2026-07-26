@@ -27,7 +27,7 @@ const AddNewClass = () => {
       createdAt: new Date()
     };
 
-    axios.post('http://localhost:5000/classes', newClass)
+    axios.post('https://ironpulse-server-silk.vercel.app/classes', newClass)
       .then(() => {
         setLoading(false);
         setMessage('Class created successfully! 🎉');

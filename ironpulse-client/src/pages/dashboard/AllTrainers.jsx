@@ -10,7 +10,7 @@ const AllTrainers = () => {
   }, []);
 
   const fetchTrainers = () => {
-    axios.get('http://localhost:5000/trainers')
+    axios.get('https://ironpulse-server-silk.vercel.app/trainers')
       .then(res => {
         setTrainers(res.data);
         setLoading(false);
@@ -19,7 +19,7 @@ const AllTrainers = () => {
   };
 
   const handleDemote = (trainerId, email) => {
-    axios.patch(`http://localhost:5000/demote-trainer/${trainerId}`, { email })
+    axios.patch(`https://ironpulse-server-silk.vercel.app/demote-trainer/${trainerId}`, { email })
       .then(() => {
         fetchTrainers();
       })

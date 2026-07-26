@@ -12,7 +12,7 @@ const ClassDetails = () => {
   const [bookingLoading, setBookingLoading] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/classes/${id}`)
+    axios.get(`https://ironpulse-server-silk.vercel.app/classes/${id}`)
       .then(res => {
         setClassData(res.data);
         setLoading(false);
@@ -42,7 +42,7 @@ const ClassDetails = () => {
       bookedAt: new Date()
     };
 
-    axios.post('http://localhost:5000/bookings', bookingPayload)
+    axios.post('https://ironpulse-server-silk.vercel.app/bookings', bookingPayload)
       .then(() => {
         setBookingLoading(false);
         alert('Successfully joined the class! 🎉 Check your dashboard.');

@@ -16,7 +16,7 @@ const AddNewSlot = () => {
 
   useEffect(() => {
     // Fetch available classes to assign slot to
-    axios.get('http://localhost:5000/classes')
+    axios.get('https://ironpulse-server-silk.vercel.app/classes')
       .then(res => {
         setClasses(res.data);
         if (res.data.length > 0) setSelectedClass(res.data[0].className);
@@ -52,7 +52,7 @@ const AddNewSlot = () => {
       isBooked: false
     };
 
-    axios.post('http://localhost:5000/slots', newSlot)
+    axios.post('https://ironpulse-server-silk.vercel.app/slots', newSlot)
       .then(() => {
         setLoading(false);
         setMessage('New Slot added successfully! 🎉');

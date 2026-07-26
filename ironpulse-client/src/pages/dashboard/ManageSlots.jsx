@@ -9,7 +9,7 @@ const ManageSlots = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axios.get(`http://localhost:5000/trainer/slots/${user.email}`)
+      axios.get(`https://ironpulse-server-silk.vercel.app/trainer/slots/${user.email}`)
         .then(res => {
           setSlots(res.data);
           setLoading(false);
@@ -21,7 +21,7 @@ const ManageSlots = () => {
   }, [user]);
 
   const handleDeleteSlot = (slotId) => {
-    axios.delete(`http://localhost:5000/slots/${slotId}`)
+    axios.delete(`https://ironpulse-server-silk.vercel.app/slots/${slotId}`)
       .then(() => {
         setSlots(slots.filter(slot => slot._id !== slotId));
       })

@@ -9,7 +9,7 @@ const UserOverview = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axios.get(`http://localhost:5000/user-stats?email=${user.email}`)
+      axios.get(`https://ironpulse-server-silk.vercel.app/user-stats?email=${user.email}`)
         .then(res => {
           setStats(res.data);
           setLoading(false);
