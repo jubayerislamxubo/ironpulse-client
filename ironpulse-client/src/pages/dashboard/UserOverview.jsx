@@ -5,10 +5,25 @@ import axios from 'axios';
 const UserOverview = () => {
   const { user } = useContext(AuthContext);
   const [stats, setStats] = useState({ bookedCount: 0, favoriteCount: 0 });
+  const [role, setRole] = useState('user');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (user?.email) {
+      // Fetch user role
+      axios.get(`https://ironpulse-server-silk.vercel.app/users?email=${user.email}`)
+        .then(res => {
+          setRole(res.data?.role || 'user');
+        })
+        .catch(() => {
+          axios.get(`https://ironpulse-server-silk.vercel.app/users/admin/${user.email}`)
+            .then(res => {
+              if (res.data?.admin) setRole('admin');
+            })
+            .catch(() => setRole('user'));
+        });
+
+      // Fetch user stats
       axios.get(`https://ironpulse-server-silk.vercel.app/user-stats?email=${user.email}`)
         .then(res => {
           setStats(res.data);
@@ -20,10 +35,10 @@ const UserOverview = () => {
 
   return (
     <div className="space-y-8">
-     
+      
       <div>
         <h1 className="text-3xl font-black text-white uppercase tracking-wider">
-          User <span className="text-emerald-400">Overview</span>
+          {role} <span className="text-emerald-400">Overview</span>
         </h1>
         <p className="text-slate-400 text-sm mt-1">
           Welcome back, <span className="text-white font-bold">{user?.displayName || 'Member'}</span>!
@@ -83,7 +98,7 @@ const UserOverview = () => {
                 {user?.displayName || 'User'}
               </h3>
               <span className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">
-                User
+                {role}
               </span>
             </div>
             <p className="text-slate-400 text-sm font-medium">{user?.email}</p>
