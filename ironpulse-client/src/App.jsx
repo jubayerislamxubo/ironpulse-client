@@ -80,7 +80,7 @@ function App() {
               <Route path="add-forum" element={<AddNewForumPost />} />
 
               
-              {/* Admin Routes - Matched with Sidebar links */}
+              {/* Admin Routes */}
               <Route 
                 path="manage-users" 
                 element={
@@ -89,6 +89,7 @@ function App() {
                   </div>
                 } 
               />
+              <Route path="manage-classes" element={<AllClasses />} /> {/* 👈 Manage Classes Fixed */}
               <Route path="applied-trainers" element={<AppliedTrainers />} />
               <Route path="manage-trainers" element={<AllTrainers />} />
               <Route path="all-trainers" element={<AllTrainers />} />
