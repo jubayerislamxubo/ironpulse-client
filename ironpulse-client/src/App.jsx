@@ -1,14 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
 import Navbar from "./components/shared/Navbar";
 import Footer from "./components/shared/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 
-
 import DashboardLayout from "./layouts/DashboardLayout";
-
 
 import Home from "./pages/Home";
 import AllClasses from "./pages/AllClasses";
@@ -19,18 +16,15 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 
-
 import UserOverview from "./pages/dashboard/UserOverview";
 import BookedClasses from "./pages/dashboard/BookedClasses";
 import ApplyTrainer from "./pages/dashboard/ApplyTrainer";
 import Favorites from "./pages/dashboard/Favorites";
 
-
 import ManageSlots from "./pages/dashboard/ManageSlots";
 import AddNewSlot from "./pages/dashboard/AddNewSlot";
 import AddNewClass from "./pages/dashboard/AddNewClass";
 import AddNewForumPost from "./pages/dashboard/AddNewForumPost";
-
 
 import AppliedTrainers from "./pages/dashboard/AppliedTrainers";
 import AllTrainers from "./pages/dashboard/AllTrainers";
@@ -46,7 +40,7 @@ function App() {
         
         <main className="flex-grow">
           <Routes>
-           
+            
             <Route path="/" element={<Home />} />
             <Route path="/all-classes" element={<AllClasses />} />
             <Route path="/classes/:id" element={<ClassDetails />} />
@@ -64,7 +58,7 @@ function App() {
               }
             />
 
-           
+            
             <Route
               path="/dashboard"
               element={
@@ -86,8 +80,19 @@ function App() {
               <Route path="add-forum" element={<AddNewForumPost />} />
 
               
+              {/* Admin Routes - Matched with Sidebar links */}
+              <Route 
+                path="manage-users" 
+                element={
+                  <div className="p-8 text-white font-bold text-2xl">
+                    Manage Users Component (Under Construction)
+                  </div>
+                } 
+              />
               <Route path="applied-trainers" element={<AppliedTrainers />} />
+              <Route path="manage-trainers" element={<AllTrainers />} />
               <Route path="all-trainers" element={<AllTrainers />} />
+              <Route path="transactions" element={<Balance />} />
               <Route path="balance" element={<Balance />} />
             </Route>
 
