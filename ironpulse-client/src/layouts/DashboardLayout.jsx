@@ -8,18 +8,32 @@ const DashboardLayout = () => {
   const [role, setRole] = useState('user'); 
   const [loading, setLoading] = useState(true);
 
-  
   useEffect(() => {
     if (user?.email) {
-      axios.get(`https://ironpulse-server-silk.vercel.app/users/role/${user.email}`)
+      // Fetching user data to determine role
+      axios.get(`https://ironpulse-server-silk.vercel.app/users?email=${user.email}`)
         .then(res => {
           setRole(res.data?.role || 'user');
           setLoading(false);
         })
         .catch(() => {
-          setRole('user');
-          setLoading(false);
+          // Fallback check if user is admin
+          axios.get(`https://ironpulse-server-silk.vercel.app/users/admin/${user.email}`)
+            .then(res => {
+              if (res.data?.admin) {
+                setRole('admin');
+              } else {
+                setRole('user');
+              }
+              setLoading(false);
+            })
+            .catch(() => {
+              setRole('user');
+              setLoading(false);
+            });
         });
+    } else {
+      setLoading(false);
     }
   }, [user]);
 
@@ -210,7 +224,7 @@ const DashboardLayout = () => {
         </div>
       </aside>
 
-     
+      
       <main className="flex-1 p-6 md:p-10 overflow-y-auto">
         <Outlet />
       </main>
